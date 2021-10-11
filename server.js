@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require("path")
 const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
 
 app.use(cors());
+app.use(express.static('./client/build'))
 
 // model
 const Schema = mongoose.Schema
@@ -28,6 +30,11 @@ app.get('/exercises', (req, res) => {
   Exercise.find()
     .then(exercises => res.json(exercises))
     .catch(err => res.status(400).json('Error: ' + err));
+})
+
+app.get('*', (req, res) => {
+  res.json({msg: 'Hello world!'})
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
 })
 
 const port = process.env.PORT || 5000;
