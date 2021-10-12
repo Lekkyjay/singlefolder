@@ -16,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>List of Exercises</h1>
       { exercises 
         ? exercises.map((exercise, index) => (
           <h2 key={index}>{exercise.description}</h2>
