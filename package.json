@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
+    "build": "cd client && npm install && npm run build",
     "start": "node server.js",
     "dev:start": "cd client && npm install && npm run build && cd ../ && node server.js"
   },
